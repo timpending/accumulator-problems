@@ -3,8 +3,8 @@
 SAMPLE
 ----------------------------------------
 
-Challenge: Write function named test that returns the string "This Works!". 
-Solution: This one has already been complete for you. 
+Challenge: Write function named test that returns the string "This Works!".
+Solution: This one has already been complete for you.
 
 */
 
@@ -12,8 +12,6 @@ function test() {
  var string ="This Works!";
  return string;
 }
-
-
 
 /*
 ----------------------------------------
@@ -24,14 +22,13 @@ Write function named sum that will take an array of numbers and return the sum o
 
 Example: if you pass it [1,2,3] then it should return 6 (which is 1 + 2 + 3)
 */
-
-
-
-
-
-
-
-
+function sum (arr){
+  let count = 0
+  for (let i=0; i<arr.length; i++){
+    count += arr[i]
+  }
+  return count
+}
 
 /*
 ----------------------------------------
@@ -42,6 +39,11 @@ Write function named doubleNumbers that will take an array of numbers and return
 
 Example: if you pass it [1,2,3] then it should return [2,4,6]
 */
+
+function doubleNumbers(arr){
+  let newArr = arr.map(el => el+el)
+  return newArr
+}
 
 
 
@@ -64,9 +66,10 @@ Examples:
 - if you call multiplyNumbers([1,2,3], 0) you'd get [0,0,0]
 - if you call multiplyNumbers([1,2,3], 5) you'd get [5,10,15]
 */
-
-
-
+function multiplyNumbers(arr, multi){
+  let newArr = arr.map(el => el*multi)
+  return newArr
+}
 
 
 
@@ -82,7 +85,11 @@ Write function named doubleLetters that will take a string and double every lett
 
 Example: if you pass it "abc" then it should return "aabbcc"
 */
-
+function doubleLetters(str){
+  str = str.split('')
+  let newArr = str.map(el => el+el)
+  return newArr.join('')
+}
 
 
 
@@ -104,7 +111,14 @@ Example: if you pass it ["a", "b", "c"] and ["d", "e", "f"] then it should retur
 NOTE: you can assume each input will be the same length
 */
 
-
+function interleave (arr1, arr2) {
+  let newArr = []
+  for (let i = 0; i<arr1.length; i++){
+    newArr.push(arr1[i])
+    newArr.push(arr2[i])
+  }
+  return newArr
+}
 
 
 
@@ -124,7 +138,13 @@ Write function named createRange that will take a number and a default value and
 Example: if you pass it 4 and "Hello" then it should return ["Hello", "Hello", "Hello", "Hello"]
 */
 
-
+function createRange(num, str){
+  let newArr = []
+  for (let i=0; i<num; i++){
+    newArr.push(str)
+  }
+  return newArr
+}
 
 
 
@@ -142,10 +162,14 @@ Example:
 
 If you pass it ["quick", "brown", "fox"] then it should return { "quick": 0, "brown": 1, "fox": 2 }
 */
-
-
-
-
+function flipArray (array){
+  var object = new Object();
+  for (var i = 0; i < array.length; i++){
+    object[array[i]] = i;
+  };
+  return object;
+};
+var testarray = ["quick", "brown", "fox"];
 
 
 
@@ -163,7 +187,13 @@ If you pass it [[2014, "Horse"], [2015, "Sheep"]] then it should return { 2014: 
 
 */
 
-
+function arraysToObject(arr){
+  let obj = {}
+  for (i=0; i<arr.length; i++){
+    obj[arr[i][0]]= arr[i][1]
+  }
+  return obj
+}
 
 
 
@@ -183,7 +213,13 @@ Example:
 If you pass it "hello" then it should return "olleh"
 */
 
-
+function reverseString(str){
+  let newStr = [];
+  for (let i=str.length-1; i>=0; i--){
+    newStr.push(str.charAt(i))
+  }
+  return newStr.join('');
+}
 
 
 
@@ -208,7 +244,15 @@ If you pass it "yay" then it should return false because it's odd
 If you pass it "heehaw" then it should return false because "hee" doesn't equal "haw"
 */
 
-
+function repeats (str){
+  let firstHalf = str.slice(0, str.length/2)
+  let secondHalf = str.slice(str.length/2, str.length)
+  if (str.length % 2 === 0 && firstHalf === secondHalf){
+      return true
+  } else {
+    return false
+  }
+}
 
 
 
@@ -227,7 +271,16 @@ Example:
 If you pass it "abcdef" then it should return "ace" because those represent every other letter
 */
 
-
+function everyOther (str){
+  let test = false
+  let newStr = []
+  for (let i=0; i<str.length; i++){
+    test = !test
+    if (test === true)
+    newStr.push(str[i])
+  }
+  return newStr.join('')
+}
 
 
 
@@ -247,7 +300,16 @@ If you pass "aaa" it should return true
 If you pass "aba" it should return false
 */
 
-
+function allEqual(str){
+  let test = true
+  let arr = str.split('')
+  for (let i=1; i<arr.length; i++){
+    if (arr[i]!==arr[i-1]){
+      test = false
+    }
+  }
+  return test
+}
 
 
 
@@ -266,7 +328,16 @@ Example:
 If you pass "45" it should return 9
 If you pass "246" it should return 10
 */
-
+function sumLetters(str){
+  let output
+  let arr = str.split('')
+  if (str === '') {
+    output = 0
+  } else {
+    output = arr.reduce( (a,b) => (Number(a)+Number(b)))
+  }
+  return output
+}
 
 
 
@@ -286,7 +357,7 @@ Example:
 If you pass "you" it should return 2
 */
 
-
+function countV
 
 
 
@@ -794,4 +865,4 @@ If you pass {1999: 4036, 2000: 7654} and 4036, it should return true
 
 
 
-// 
+//

@@ -1,7 +1,7 @@
 window.onload = function() {
   var expect = chai.expect;
   mocha.setup('bdd');
-  
+
   describe('test', function() {
 
     it("string set properly", function() {
@@ -9,7 +9,7 @@ window.onload = function() {
     })
 
   })
-  
+
 
   describe('sum', function() {
 
