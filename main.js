@@ -357,7 +357,16 @@ Example:
 If you pass "you" it should return 2
 */
 
-function countV
+function countVowels(str) {
+  function vowels(value) {
+    if (value === 'a' || value === 'e' || value === 'i' || value === 'o' || value === 'u' ) {
+      return value
+    }
+  }
+  let arr = str.split('')
+  let vowelArr = arr.filter(vowels)
+  return vowelArr.length
+}
 
 
 
@@ -379,7 +388,13 @@ If you pass "you" it should return ["y", "o", "u"]
 
 NOTE: do not use the builtin `split` method
 */
-
+function split(str){
+  let arr = []
+  for (let i=0; i<str.length; i++){
+    arr.push(str.charAt(i))
+  }
+  return arr
+}
 
 
 
@@ -400,7 +415,13 @@ Example:
 
 If you pass "Hello" it should return [ 72, 101, 108, 108, 111 ]
 */
-
+function getCodePoints (str) {
+  let arr = []
+  for (let i=0; i<str.length; i++){
+    arr.push(str.codePointAt(i))
+  }
+  return arr
+}
 
 
 
@@ -420,7 +441,13 @@ Example:
 If you pass "Yo" it should return {Y: 0, o: 1}
 If you pass "Hello" it should return {H: 0, e: 1, l: 3, o: 4}
 */
-
+function letterMap(str) {
+  let obj = {}
+  for (let i=0; i<str.length; i++){
+    obj[str.charAt(i)] = i
+  }
+  return obj
+}
 
 
 
@@ -440,7 +467,17 @@ Example:
 If you pass "Yo" it should return {Y: 1, o: 1}
 If you pass "Hello" it should return {"H": 1, "e": 1, "l": 2, "o": 1}
 */
-
+function letterCount(str) {
+  let obj = {}
+  for (let i=0; i<str.length; i++){
+    if (obj[str.charAt(i)]){
+      obj[str.charAt(i)]++
+    } else {
+      obj[str.charAt(i)] = 1
+    }
+  }
+  return obj
+}
 
 
 
@@ -461,7 +498,19 @@ Example:
 If you pass 0,2 it should return false because the only number between 0 and 2 is 1
 If you pass 0,6 it should return true because between 0 and six (the numbers 1,2,3,4,5) there are three odds - 1, 3 and 5
 */
-
+function threeOdds (x, y) {
+  let count = 0
+  for (i=x+1; i<y; i++){
+    if (i%2 !== 0){
+      count++
+    }
+  }
+  if (count>2){
+    return true
+  } else {
+    return false
+  }
+}
 
 
 
@@ -483,7 +532,17 @@ Example:
 If you pass "a", 3, "*" it should return "**a" - that is, a string of length 3, padded on the left by the "*" character
 */
 
-
+function leftPad(str, len, fill){
+  let fillStr = ''
+  if (str.length < len){
+    for (let i=0; i<(len-str.length); i++){
+      fillStr+=fill
+    }
+    return fillStr+str
+  } else {
+    return str
+  }
+}
 
 
 
@@ -503,7 +562,13 @@ If you pass "a", 3 it should return "aaa"
 If you pass "b", 3 it should return "bb"
 */
 
-
+function createString(len, char){
+  let str =''
+  for (i=1; i<=len; i++){
+    str+=char
+  }
+  return str
+}
 
 
 
@@ -524,7 +589,13 @@ Example:
 If you pass 4 it should return 24 since that's 4 * 3 * 2 * 1
 If you pass 5 it should return 120 since that's 5 * 4 * 3 * 2 * 1
 */
-
+function factorial(num){
+  let output = 1
+  for (i=num; i>0; i--){
+    output *= i
+  }
+  return output
+}
 
 
 
@@ -545,7 +616,13 @@ If you pass 1 it should return [1]
 If you pass 3 it should return [1,2,3]
 */
 
-
+function arrayOfNumbers(num){
+  let arr = []
+  for (i=1; i<=num; i++){
+    arr.push(i)
+  }
+  return arr
+}
 
 
 
@@ -563,7 +640,20 @@ Example:
 
 If you pass 1,4 it should return {"1": "odd", "2": "even", "3": "odd", "4": "even"}
 */
-
+function evenOdd(start, end) {
+  let obj = {}
+  if (start === 0 && end === 0){
+    return obj
+  }
+  for (i=start; i<=end; i++){
+    let test = 'odd'
+    if (i%2 ===0) {
+      test = 'even'
+    }
+    obj[i.toString()] = test
+  }
+  return obj
+}
 
 
 
@@ -584,7 +674,18 @@ Example:
 If you pass 2,"d" it should return {"d": true, "dd": true}
 */
 
-
+function growingKeys(num, str) {
+  let obj = {};
+  let key = ''
+  if (num === 0) {
+    return obj
+  }
+  for (i=0; i<num; i++){
+    key+=str
+    obj[key] = true
+  }
+  return obj
+}
 
 
 
@@ -605,7 +706,15 @@ Example:
 If you pass [1,1], 1 it should return true
 If you pass [1,2], 1 it should return false
 */
-
+function every(arr, value){
+  let output = true
+  arr.forEach(el => {
+    if (el !== value){
+      output = false
+    }
+  })
+  return output
+}
 
 
 
@@ -625,7 +734,13 @@ Example:
 If you pass [1,2], 1 it should return true
 If you pass [3,2], 1 it should return false
 */
-
+function some(arr, val){
+  if (arr.indexOf(val) > -1){
+    return true
+  } else {
+    return false
+  }
+}
 
 
 
@@ -645,7 +760,17 @@ Example:
 If you pass ["Sue", "Will"] it should return "Sue and Will"
 If you pass ["Sue", "Will", "Rachel"] it should return "Sue, Will and Rachel"
 */
-
+function toSentence(arr){
+  let str = ''
+  if (arr.length === 0){
+    return str
+  }
+  let temp = arr[arr.length-2] + " and " + arr[arr.length-1]
+  for (let i=0; i<arr.length-2; i++){
+    str+=arr[i] + ', '
+  }
+  return str + temp
+}
 
 
 
@@ -670,7 +795,13 @@ Example:
 If you pass ["Sue", "Will"] it should return "SW"
 If you pass ["Java", Script", "Object", "Notation"] it should return "JSON"
 */
-
+function acronym(arr){
+  let output = []
+  for (let i=0; i<arr.length; i++){
+    output.push(arr[i].charAt(0))
+  }
+  return output.join('')
+}
 
 
 
@@ -689,7 +820,19 @@ Example:
 
 If you pass [0,-3,2,5] it should return -3
 */
-
+function min(arr){
+  if (arr.length === 0 ){
+    return undefined
+  } else {
+    let king = Infinity
+    arr.forEach(el => {
+      if (el <= king){
+        king = el
+      }
+    })
+    return king
+  }
+}
 
 
 
@@ -712,7 +855,17 @@ Example:
 If you pass [{id: 1, name: "Joe"}, {id: 2, name: "Sue"}] it should return {1: {id: 1, name: "Joe"}, 2: {id: 2, name: "Sue"}}
 
 */
-
+function index(arr, prop){
+  let obj = {}
+  if (arr.length === 0 ){
+    return obj
+  } else {
+    arr.forEach(el =>{
+      obj[el[prop]] = el
+    })
+  }
+  return obj
+}
 
 
 
@@ -731,6 +884,13 @@ Example:
 
 If you pass {id: 1, name: "Joe"} it should return {1: "id", Joe: "name"}
 */
+function invert (obj){
+  let output = {}
+  for (var key in obj){
+    output[obj[key]] = key
+  }
+  return output
+}
 
 
 
@@ -753,7 +913,15 @@ Example:
 
 If you pass {"contract": "foo"}, "Fred" it should return {"contract-signed": "foo - Fred"}
 */
-
+function addSignature(name, obj) {
+  let output = {}
+  for (var key in obj){
+     let newKey = key +'-signed'
+     let newVal = obj[key] + ' - ' + name
+     output[newKey] = newVal
+  }
+  return output
+}
 
 
 
@@ -772,6 +940,14 @@ Example:
 
 If you pass {name: "Will", age: 24} it should return ["name - will", "age - 24"]
 */
+function pairs(obj){
+  let arr =[]
+  for (var key in obj){
+    let str = `${key} - ${obj[key]}`
+    arr.push(str)
+  }
+  return arr
+}
 
 
 
@@ -791,7 +967,13 @@ Example:
 
 If you pass {a: 1, b: 2} it should return 3
 */
-
+function sumValues(obj){
+  let count = 0
+  for (var key in obj){
+    count += obj[key]
+  }
+  return count
+}
 
 
 
@@ -810,6 +992,17 @@ Example:
 
 If you pass {1999: 4036, 2000: 7654} it should return '2000'
 */
+function biggestProperty (obj){
+    let king = undefined
+    let temp = -Infinity
+    for (var key in obj){
+      if (temp < obj[key]){
+        king = key
+        temp = obj[key]
+      }
+    }
+    return king
+}
 
 
 
@@ -836,7 +1029,15 @@ Example:
 If you pass {1999: 4036, 2000: 7654} and 4036, it should return '1999'
 */
 
-
+function keyForValue(obj, val){
+  let temp = undefined
+  for (var key in obj){
+    if (obj[key] === val) {
+      temp = key
+    }
+  }
+  return temp
+}
 
 
 
@@ -857,7 +1058,14 @@ Example:
 If you pass {1999: 4036, 2000: 7654} and 4036, it should return true
 */
 
-
+function containsValue(obj, val){
+  for (var key in obj){
+    if (obj[key] === val) {
+      return true
+    }
+  }
+  return false
+}
 
 
 
