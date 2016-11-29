@@ -138,15 +138,13 @@ Write function named createRange that will take a number and a default value and
 Example: if you pass it 4 and "Hello" then it should return ["Hello", "Hello", "Hello", "Hello"]
 */
 
-function createRange(num, str){
-  let newArr = []
+function createRange(num, val){
+  let output = Array(num)
   for (let i=0; i<num; i++){
-    newArr.push(str)
+    output[i] = val
   }
-  return newArr
+  return output
 }
-
-
 
 
 
